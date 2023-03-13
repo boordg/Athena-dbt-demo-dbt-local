@@ -6,7 +6,8 @@ SELECT REVIEW_BODY,
             WHEN STAR_RATING = 3              THEN 0
             WHEN STAR_RATING BETWEEN 4 AND 5  THEN 1
             ELSE NULL
-       END                                  AS SENTIMENT
+       END                                  AS SENTIMENT,
+       CLOTHING_ID                          AS CLOTHING_ID
 FROM {{ ref('vw_women_clothes_reviews_rename_columns') }}
 
 

@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "../Athena-dbt-demo-tf-local"
+		},
+		{
+			"name": "Athena-dbt-demo-dbt-local",
+			"path": "."
+		}
+	],
+	"settings": {}
+}

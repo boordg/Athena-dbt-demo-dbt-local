@@ -6,6 +6,11 @@ name: 'athena_dbt_demo'
 version: '1.0.0'
 config-version: 2
 
+# Define variables here
+vars:
+  path_year: "2023"
+  path_month: "03"
+  
 # This setting configures which "profile" dbt uses for this project.
 profile: 'athena_dbt_demo'
 
@@ -38,4 +43,8 @@ models:
     # This will help to store the result in JSON
       +materialized: view
     analytics_layer:
-      +materialized: view
+      +materialized: table
+      +external_location: "s3://datadump01/export/tbl_women_clothes_reviews_output/year=${var('path_year')}/month=${var('path_month')}"
+      +format: "|"
+      +bucketed_by: "['clothing_id']"
+      +bucket_count: 1

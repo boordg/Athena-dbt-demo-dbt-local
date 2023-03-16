@@ -46,5 +46,5 @@ models:
       +materialized: table
       +external_location: "s3://datadump01/export/tbl_women_clothes_reviews_output/year=${var('path_year')}/month=${var('path_month')}"
       +format: "|"
-      +bucketed_by: "['clothing_id']"
+      +bucketed_by: "['clothing_id ']"
       +bucket_count: 1

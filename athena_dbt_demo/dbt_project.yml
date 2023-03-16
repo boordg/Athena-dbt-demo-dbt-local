@@ -41,10 +41,32 @@ models:
     # Config indicated by + and applies to all files under models/example/
     prep_layer:
     # This will help to store the result in JSON
+      +enabled: false
       +materialized: view
     analytics_layer:
+      +enabled: false
       +materialized: table
       +external_location: "s3://datadump01/export/tbl_women_clothes_reviews_output/year=${var('path_year')}/month=${var('path_month')}"
       +format: "|"
-      +bucketed_by: "['clothing_id ']"
+      +bucketed_by: "['clothing_id']"
       +bucket_count: 1
+lumos_poc_table_Location_A:
+      +enabled: true
+      +materialized: table
+      +external_location: "s3://digifish-internal/export_lumos_poc/site=Location_A"
+      +format: "|"
+      +bucketed_by: "['maid']"
+      +bucket_count: 1      
+      +longitude: 151.1977334
+      +latitude: -33.86048905
+      +distance_meters: 150.1      
+lumos_poc_table_Location_B:
+      +enabled: false
+      +materialized: table
+      +external_location: "s3://digifish-internal/export_lumos_poc/site=Location_B"
+      +format: "|"
+      +bucketed_by: "['maid']"
+      +bucket_count: 1      
+      +longitude: 151.2128683
+      +latitude: -33.87025354
+      +distance_meters: 150.1

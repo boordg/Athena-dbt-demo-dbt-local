@@ -12,8 +12,11 @@ vars:
   path_month: "01"
   a_longitude: 151.1977334
   a_latitude: -33.86048905
-  a_distance_meters: 350.1
-
+  a_distance_meters: 150.1
+  b_longitude: 151.2128683
+  b_latitude: -33.87025354
+  b_distance_meters: 150.1
+  
 
 # This setting configures which "profile" dbt uses for this project.
 profile: 'athena_dbt_demo'
@@ -56,19 +59,17 @@ models:
       +bucket_count: 1
     lumos_poc_table_location_a:
       +materialized: table
-      +enabled: true
+      +enabled: false
       +external_location: "s3://digifish-internal/export_lumos_poc/site=location_a/"
       +format: TEXTFILE
       +field_delimiter: "|"
       +bucketed_by: ['maid']
       +bucket_count: 1
-# lumos_poc_table_Location_B:
-#       +enabled: false
-#       +materialized: table
-#       +external_location: "s3://digifish-internal/export_lumos_poc/site=Location_B"
-#       +format: "|"
-#       +bucketed_by: "['maid']"
-#       +bucket_count: 1      
-#       +longitude: 151.2128683
-#       +latitude: -33.87025354
-#       +distance_meters: 150.1
+    lumos_poc_table_location_b:
+      +materialized: table
+      +enabled: true
+      +external_location: "s3://digifish-internal/export_lumos_poc/site=location_b/"
+      +format: TEXTFILE
+      +field_delimiter: "|"
+      +bucketed_by: ['maid']
+      +bucket_count: 1
